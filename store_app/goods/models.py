@@ -78,4 +78,15 @@ class Products(models.Model):
         verbose_name_plural = "Товары"
 
     def __str__(self):
+        """Метод для вывода name."""
         return self.name
+
+    def display_id(self):
+        """Метод для форматированного вывода id."""
+        return f'{self.id:05}'
+
+    def sell_price(self):
+        """Метод для перерасчета цены при наличии скидки."""
+        if self.discount:
+            return round(self.price - (self.price/100 * self.discount), 2)
+        return self.price

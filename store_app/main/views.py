@@ -11,8 +11,7 @@ def index(request) -> HttpResponse:
     """Функция главной страницы."""
     context = {
         'title': TEXT_IN_HOME['title'],
-        'content': TEXT_IN_HOME['content'],
-        'categories': Category.objects.all()
+        'content': TEXT_IN_HOME['content']
     }
     return render(request, 'index.html', context)
 
