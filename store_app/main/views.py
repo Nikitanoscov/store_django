@@ -2,6 +2,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
+from goods.models import Category
+
 from .constant import TEXT_IN_ABOUT, TEXT_IN_HOME
 
 
@@ -9,7 +11,8 @@ def index(request) -> HttpResponse:
     """Функция главной страницы."""
     context = {
         'title': TEXT_IN_HOME['title'],
-        'content': TEXT_IN_HOME['content']
+        'content': TEXT_IN_HOME['content'],
+        'categories': Category.objects.all()
     }
     return render(request, 'index.html', context)
 
